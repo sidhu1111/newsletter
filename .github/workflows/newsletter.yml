@@ -1,0 +1,49 @@
+name: Daily Market Newsletter
+
+on:
+  schedule:
+    - cron: '0 14 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-newsletter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install yfinance requests
+
+      - name: Generate newsletter
+        env:
+          NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
+        run: python daily_newsletter.py
+
+      - name: Publish to GitHub Pages
+        run: |
+          mkdir -p docs/archive
+          cp newsletter.html docs/index.html
+          DATE=$(date +%Y-%m-%d)
+          cp newsletter.html docs/archive/$DATE.html
+          cd docs/archive
+          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Archive</title><style>body{background:#0a0a0f;color:#e0e0e0;font-family:Arial;padding:40px;max-width:600px;margin:0 auto;}a{color:#4da6ff;}h1{color:#00ff88;}li{padding:8px 0;}</style></head><body><h1>Newsletter Archive</h1><ul>' > index.html
+          for f in $(ls -r *.html | grep -v index.html); do echo "<li><a href=\"$f\">$(echo $f | sed s/.html//)</a></li>" >> index.html; done
+          echo '</ul></body></html>' >> index.html
+
+      - name: Commit and push
+        run: |
+          git config user.name "Newsletter Bot"
+          git config user.email "bot@newsletter.local"
+          git add docs/
+          git diff --staged --quiet || git commit -m "Newsletter update $(date +%Y-%m-%d)"
+          git push
