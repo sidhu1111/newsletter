@@ -1,0 +1,57 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Sectors</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e0e0e0;font-family:'Inter',system-ui,sans-serif;line-height:1.6}
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,255,136,0.08);padding:0 20px}
+nav .c{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;flex-wrap:wrap}
+nav .logo{font-size:18px;font-weight:800;color:#00ff88;text-decoration:none;letter-spacing:0.5px}
+nav .lk{display:flex;gap:2px;flex-wrap:wrap}
+nav .lk a{color:#6b6b8a;text-decoration:none;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;transition:all 0.25s}
+nav .lk a:hover,nav .lk a.on{color:#00ff88;background:rgba(0,255,136,0.08)}
+.pg{max-width:1400px;margin:0 auto;padding:24px 20px}
+.hdr{text-align:center;padding:48px 24px 40px;margin-bottom:32px;background:linear-gradient(135deg,#0f0f1a,#1a1a3e,#0f2440);border-radius:20px;border:1px solid rgba(0,255,136,0.08);position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00ff88,#4da6ff,#00ff88,transparent)}
+.hdr h1{font-size:36px;font-weight:900;background:linear-gradient(135deg,#00ff88,#4da6ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.hdr p{color:#6b6b8a;font-size:14px}
+.grid{display:grid;gap:16px;margin-bottom:28px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.cd{background:rgba(18,18,28,0.8);border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,0.04);transition:all 0.3s;backdrop-filter:blur(10px)}
+.cd:hover{border-color:rgba(0,255,136,0.15);transform:translateY(-1px);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+.cd h3{color:#00ff88;font-size:13px;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:14px;font-weight:700}
+.ic{text-align:center;padding:18px 12px}
+.ic .nm{font-size:11px;color:#6b6b8a;text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
+.ic .pr{font-size:24px;font-weight:800;margin:8px 0 4px;font-family:'JetBrains Mono',monospace}
+.ic .ch{font-size:13px;font-weight:700;font-family:'JetBrains Mono',monospace}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;padding:12px 8px;color:#4a4a6a;font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:700;border-bottom:2px solid rgba(255,255,255,0.04)}
+td{padding:12px 8px;border-bottom:1px solid rgba(255,255,255,0.03);font-size:13px}
+tr:hover{background:rgba(0,255,136,0.02)}
+.r{text-align:right}.mono{font-family:'JetBrains Mono',monospace}
+.sig{display:inline-block;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:0.5px}
+.sig-b{background:rgba(0,255,136,0.12);color:#00ff88}.sig-h{background:rgba(255,255,0,0.1);color:#ffff00}
+.sig-w{background:rgba(77,166,255,0.1);color:#4da6ff}.sig-a{background:rgba(255,68,68,0.1);color:#ff4444}
+.sig-lb{background:rgba(102,255,102,0.08);color:#66ff66}.sig-lbr{background:rgba(255,102,0,0.08);color:#ff6600}
+.sig-n{background:rgba(255,255,0,0.06);color:#ffff00}
+.grn{color:#00ff88}.red{color:#ff4444}.gry{color:#6b6b8a}.blu{color:#4da6ff}
+.ab{background:rgba(10,10,20,0.6);border-radius:10px;padding:18px;margin:10px 0;border-left:3px solid #4da6ff;font-size:13px;line-height:1.8;color:#aaaac0}
+.ni{padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.03)}.ni:last-child{border-bottom:none}
+.ni h4{font-size:15px;font-weight:600;margin-bottom:6px}.ni h4 a{color:#e0e0e0;text-decoration:none;transition:color 0.2s}.ni h4 a:hover{color:#4da6ff}
+.ni .an{color:#9999b0;font-size:13px;line-height:1.8;margin:8px 0}
+.ni .mt{color:#4a4a6a;font-size:11px}.ni .rm{color:#4da6ff;font-size:12px;text-decoration:none;font-weight:600}.ni .rm:hover{text-decoration:underline}
+.gauge{height:8px;border-radius:4px;background:linear-gradient(90deg,#ff0000,#ff6600,#ffff00,#66ff66,#00ff00);position:relative;margin:12px 0}
+.gauge .dot{width:14px;height:14px;background:#fff;border-radius:50%;position:absolute;top:-3px;box-shadow:0 0 10px rgba(255,255,255,0.6);transition:left 0.5s}
+.sb{display:inline-block;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700}
+.sb-soc{background:rgba(0,255,136,0.1);color:#00ff88}.sb-bsk{background:rgba(255,102,0,0.1);color:#ff6600}
+.sb-ftb{background:rgba(77,166,255,0.1);color:#4da6ff}.sb-hky{background:rgba(255,68,68,0.1);color:#ff4444}.sb-bsb{background:rgba(255,255,0,0.1);color:#ffff00}
+.hm{text-align:center;padding:16px 10px;border-radius:12px;min-height:90px;display:flex;flex-direction:column;justify-content:center;transition:transform 0.2s}
+.hm:hover{transform:scale(1.03)}
+.hm .sn{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:0.8}
+.hm .sv{font-size:22px;font-weight:800;font-family:'JetBrains Mono',monospace;margin:4px 0}
+.lnk{color:#4da6ff;text-decoration:none;font-weight:600;font-size:14px;transition:color 0.2s}.lnk:hover{color:#00ff88}
+.st{font-size:20px;font-weight:700;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.05);color:#e0e0e0}
+.st em{font-style:normal;color:#00ff88}
+footer{text-align:center;padding:40px 20px;color:#3a3a5a;font-size:11px;border-top:1px solid rgba(255,255,255,0.03)}
+@media(max-width:768px){.g4{grid-template-columns:repeat(2,1fr)}.hdr h1{font-size:24px}nav .lk a{padding:6px 8px;font-size:11px}}
+</style></head><body><nav><div class="c"><a href="index.html" class="logo">📊 MARKET PULSE</a><div class="lk"><a href="index.html" class="">Dashboard</a><a href="stocks.html" class="">Stocks</a><a href="market-news.html" class="">Market News</a><a href="global-macro.html" class="">Global Macro</a><a href="sectors.html" class="on">Sectors</a><a href="sports.html" class="">Sports</a></div></div></nav><div class="pg"><div class="hdr"><h1>🎯 Sector Map</h1><p>S&amp;P 500 sector performance heatmap</p></div><div class="st">🗺️ Sector <em>Heatmap</em></div><div class="grid g4" style="margin-bottom:16px"><div class="hm" style="background:rgba(0,255,136,0.2)"><div class="sn" style="color:#00ff88">Technology</div><div class="sv" style="color:#00ff88">+3.73%</div><div class="gry" style="font-size:11px">XLK</div></div><div class="hm" style="background:rgba(0,255,136,0.1)"><div class="sn" style="color:#66ff66">Financials</div><div class="sv" style="color:#66ff66">+0.75%</div><div class="gry" style="font-size:11px">XLF</div></div><div class="hm" style="background:rgba(255,68,68,0.2)"><div class="sn" style="color:#ff4444">Energy</div><div class="sv" style="color:#ff4444">-1.94%</div><div class="gry" style="font-size:11px">XLE</div></div><div class="hm" style="background:rgba(0,255,136,0.1)"><div class="sn" style="color:#66ff66">Healthcare</div><div class="sv" style="color:#66ff66">+0.81%</div><div class="gry" style="font-size:11px">XLV</div></div><div class="hm" style="background:rgba(0,255,136,0.2)"><div class="sn" style="color:#00ff88">Consumer Disc</div><div class="sv" style="color:#00ff88">+2.48%</div><div class="gry" style="font-size:11px">XLY</div></div><div class="hm" style="background:rgba(255,255,0,0.06)"><div class="sn" style="color:#ffff00">Consumer Staples</div><div class="sv" style="color:#ffff00">-0.26%</div><div class="gry" style="font-size:11px">XLP</div></div><div class="hm" style="background:rgba(0,255,136,0.2)"><div class="sn" style="color:#00ff88">Industrials</div><div class="sv" style="color:#00ff88">+3.24%</div><div class="gry" style="font-size:11px">XLI</div></div><div class="hm" style="background:rgba(0,255,136,0.2)"><div class="sn" style="color:#00ff88">Materials</div><div class="sv" style="color:#00ff88">+3.27%</div><div class="gry" style="font-size:11px">XLB</div></div><div class="hm" style="background:rgba(255,255,0,0.06)"><div class="sn" style="color:#ffff00">Real Estate</div><div class="sv" style="color:#ffff00">-0.16%</div><div class="gry" style="font-size:11px">XLRE</div></div><div class="hm" style="background:rgba(255,255,0,0.06)"><div class="sn" style="color:#ffff00">Utilities</div><div class="sv" style="color:#ffff00">+0.11%</div><div class="gry" style="font-size:11px">XLU</div></div><div class="hm" style="background:rgba(0,255,136,0.1)"><div class="sn" style="color:#66ff66">Communications</div><div class="sv" style="color:#66ff66">+1.00%</div><div class="gry" style="font-size:11px">XLC</div></div></div><div class="ab"><b>Leading:</b> Technology (+3.7%), Materials (+3.3%), Industrials (+3.2%). <b>Lagging:</b> Real Estate (-0.2%), Consumer Staples (-0.3%), Energy (-1.9%).</div><div class="st" style="margin-top:28px">📊 Sector <em>Comparison</em></div><div class="cd"><table><tr><th>Sector</th><th class="r">Today</th><th class="r">5D</th><th class="r">20D</th></tr><tr><td><b>Technology</b></td><td class="r"><span class="grn mono" style="font-weight:700">▲ +3.73%</span></td><td class="r gry mono">+1.6%</td><td class="r gry mono">+4.6%</td></tr><tr><td><b>Materials</b></td><td class="r"><span class="grn mono" style="font-weight:700">▲ +3.27%</span></td><td class="r gry mono">+1.2%</td><td class="r gry mono">-1.8%</td></tr><tr><td><b>Industrials</b></td><td class="r"><span class="grn mono" style="font-weight:700">▲ +3.24%</span></td><td class="r gry mono">+0.6%</td><td class="r gry mono">+0.5%</td></tr><tr><td><b>Consumer Disc</b></td><td class="r"><span class="grn mono" style="font-weight:700">▲ +2.48%</span></td><td class="r gry mono">+1.3%</td><td class="r gry mono">-1.7%</td></tr><tr><td><b>Communications</b></td><td class="r"><span class="grn mono" style="font-weight:700">▲ +1.00%</span></td><td class="r gry mono">+0.4%</td><td class="r gry mono">-3.2%</td></tr><tr><td><b>Healthcare</b></td><td class="r"><span class="grn mono" style="font-weight:700">▲ +0.81%</span></td><td class="r gry mono">+0.7%</td><td class="r gry mono">+5.6%</td></tr><tr><td><b>Financials</b></td><td class="r"><span class="grn mono" style="font-weight:700">▲ +0.75%</span></td><td class="r gry mono">+0.6%</td><td class="r gry mono">+2.0%</td></tr><tr><td><b>Utilities</b></td><td class="r"><span class="grn mono" style="font-weight:700">▲ +0.11%</span></td><td class="r gry mono">-0.7%</td><td class="r gry mono">-2.5%</td></tr><tr><td><b>Real Estate</b></td><td class="r"><span class="red mono" style="font-weight:700">▼ -0.16%</span></td><td class="r gry mono">+0.5%</td><td class="r gry mono">+0.8%</td></tr><tr><td><b>Consumer Staples</b></td><td class="r"><span class="red mono" style="font-weight:700">▼ -0.26%</span></td><td class="r gry mono">+2.2%</td><td class="r gry mono">+1.0%</td></tr><tr><td><b>Energy</b></td><td class="r"><span class="red mono" style="font-weight:700">▼ -1.94%</span></td><td class="r gry mono">-1.0%</td><td class="r gry mono">-0.8%</td></tr></table></div></div><footer><p>Updated June 11, 2026 11:03 PM UTC</p><p>Data: Yahoo Finance &amp; NewsAPI | Not financial advice.</p><p>Powered by Python &amp; GitHub Actions</p></footer></body></html>
