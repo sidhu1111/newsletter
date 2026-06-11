@@ -11,7 +11,6 @@ permissions:
 jobs:
   build-newsletter:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -31,19 +30,15 @@ jobs:
 
       - name: Publish to GitHub Pages
         run: |
-          mkdir -p docs/archive
-          cp newsletter.html docs/index.html
-          DATE=$(date +%Y-%m-%d)
-          cp newsletter.html docs/archive/$DATE.html
-          cd docs/archive
-          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Archive</title><style>body{background:#0a0a0f;color:#e0e0e0;font-family:Arial;padding:40px;max-width:600px;margin:0 auto;}a{color:#4da6ff;}h1{color:#00ff88;}li{padding:8px 0;}</style></head><body><h1>Newsletter Archive</h1><ul>' > index.html
-          for f in $(ls -r *.html | grep -v index.html); do echo "<li><a href=\"$f\">$(echo $f | sed s/.html//)</a></li>" >> index.html; done
-          echo '</ul></body></html>' >> index.html
+          mkdir -p docs/archive/$(date +%Y-%m-%d)
+          for f in index.html stocks.html market-news.html global-macro.html sectors.html sports.html; do
+            [ -f "$f" ] && cp "$f" docs/ && cp "$f" docs/archive/$(date +%Y-%m-%d)/
+          done
 
       - name: Commit and push
         run: |
           git config user.name "Newsletter Bot"
           git config user.email "bot@newsletter.local"
           git add docs/
-          git diff --staged --quiet || git commit -m "Newsletter update $(date +%Y-%m-%d)"
+          git diff --staged --quiet || git commit -m "Market Pulse $(date +%Y-%m-%d)"
           git push
